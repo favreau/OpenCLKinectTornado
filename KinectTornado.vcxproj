@@ -23,6 +23,7 @@
     <ProjectGuid>{48D760A3-A90C-439B-A976-7AC2896B30FE}</ProjectGuid>
     <RootNamespace>oclSimpleGL</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -36,14 +37,16 @@
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>false</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 4.1.props" />
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 8.0.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" />
@@ -130,8 +133,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>oclUtils64D.lib;shrUtils64D.lib;glew64.lib;freeglut.lib;OpenCL.lib;</AdditionalDependencies>
-      <OutputFile>$(OutDir)/oclSimpleGL.exe</OutputFile>
+      <AdditionalDependencies>glew64.lib;freeglut.lib;OpenCL.lib;Kinect10.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(CudaToolkitDir)/lib/$(Platform);../../common/lib/$(Platform);../../../shared/lib/$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
@@ -186,8 +188,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>oclUtils64.lib;shrUtils64.lib;glew64.lib;freeglut.lib;OpenCL.lib;</AdditionalDependencies>
-      <OutputFile>$(OutDir)/oclSimpleGL.exe</OutputFile>
+      <AdditionalDependencies>glew64.lib;freeglut.lib;OpenCL.lib;Kinect10.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(CudaToolkitDir)/lib/$(Platform);../../common/lib/$(Platform);../../../shared/lib/$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
@@ -219,18 +220,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="../../common/oclUtils_vs2010.vcxproj">
-      <Name>oclUtils</Name>
-      <Project>{BF58727A-D088-4911-8A40-74DFD600AD30}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="../../../shared/shrUtils_vs2010.vcxproj">
-      <Name>shrUtils</Name>
-      <Project>{F9750D72-D315-4F81-AF1B-10938220FFB3}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="KinectTornado.cl" />
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +231,6 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 4.1.targets" />
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 8.0.targets" />
   </ImportGroup>
 </Project>

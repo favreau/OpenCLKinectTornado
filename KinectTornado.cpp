@@ -24,8 +24,8 @@
 #include <windows.h>
 
 // OpenGL Graphics
-#include <GL/freeglut.h>
 #include <GL/glew.h>
+#include <GL/freeglut.h>
 
 // system
 #include <cassert>
@@ -507,9 +507,9 @@ void DisplayGL() {
 
   glColor3f(0.5f, 0.5f, 0.5f);
   if (gMouseControl) {
-    gMouseNewX = positions[NUI_SKELETON_POSITION_HAND_RIGHT].x * 1000.f;
-    gMouseNewY = positions[NUI_SKELETON_POSITION_HAND_RIGHT].y * 1000.f;
-    SetCursorPos(960.f + gMouseNewX * 2.f, 540.f - gMouseNewY * 2.f);
+	gMouseNewX = static_cast<int>(positions[NUI_SKELETON_POSITION_HAND_RIGHT].x * 1000);
+    gMouseNewY = static_cast<int>(positions[NUI_SKELETON_POSITION_HAND_RIGHT].y * 1000);
+    SetCursorPos(static_cast<int>(960.f + gMouseNewX * 2.f), static_cast<int>(540.f - gMouseNewY * 2.f));
 
     if (abs(gMouseX - gMouseNewX) < gMousePrecision &&
         abs(gMouseY - gMouseNewY) < gMousePrecision) {
